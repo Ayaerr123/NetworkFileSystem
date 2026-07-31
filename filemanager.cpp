@@ -1,3 +1,3 @@
 #include "filemanager.h"
 
-FileManager::FileManager() {}
+fileManager::fileManager() {}

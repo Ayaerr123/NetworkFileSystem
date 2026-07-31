@@ -30,6 +30,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         admin.h admin.cpp
         filemanager.h filemanager.cpp
         clienthandler.h clienthandler.cpp
+        socketclient.h socketclient.cpp
+
+        filemanager.h filemanager.cpp
+        datamanager.h datamanager.cpp
+        authentificationmanager.h authentificationmanager.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET miniDFSS APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
