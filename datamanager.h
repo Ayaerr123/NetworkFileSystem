@@ -1,15 +1,15 @@
 #ifndef DATAMANAGER_H
 #define DATAMANAGER_H
 
-#include <QObject>
 #include <QVector>
 #include <QString>
+#include <QSqlDatabase>
 #include "user.h"
 #include "file.h"
 //only communicate with sqlite
 class DataManager
 {
-    Q_OBJECT
+    QSqlDatabase db;
 public:
     DataManager();
     bool connect();

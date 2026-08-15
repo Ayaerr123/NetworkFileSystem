@@ -1,13 +1,11 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <QObject>
 #include "user.h"
 #include "socketclient.h"
 
 class client
 {
-    Q_OBJECT
     socketClient socket;
     user current;
 public:

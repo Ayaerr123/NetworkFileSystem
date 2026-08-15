@@ -1,7 +1,6 @@
 #ifndef CLIENTHANDLER_H
 #define CLIENTHANDLER_H
 
-#include <QObject>
 #include <QString>
 #include "user.h"
 #include <winsock2.h>
@@ -9,7 +8,6 @@
 //handles one connected user so the server wouldnt get stuck while more users are connected at the same time
 class ClientHandler
 {
-    Q_OBJECT
     SOCKET socket;
     user current;
 public:

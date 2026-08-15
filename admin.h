@@ -1,13 +1,11 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
-#include <QObject>
 #include <QString>
 #include "user.h"
 
 class admin : public user
 {
-    Q_OBJECT
 public:
     admin();
     void view_logs();

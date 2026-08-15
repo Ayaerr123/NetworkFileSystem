@@ -1,12 +1,11 @@
 #ifndef AUTHENTIFICATIONMANAGER_H
 #define AUTHENTIFICATIONMANAGER_H
 
-#include <QObject>
 #include <QString>
 #include "datamanager.h"
+
 class authentificationManager
 {
-    Q_OBJECT
     DataManager& data;
 public:
     explicit authentificationManager(DataManager&);

@@ -1,13 +1,11 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include <QObject>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include "clienthandler.h"
 class server
 {
-    Q_OBJECT
     SOCKET ssocket;//server socket
     QVector<ClientHandler*> clients;
 public:

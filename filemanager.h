@@ -1,14 +1,11 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
-
-#include <QObject>
 #include <QString>
 #include <QVector>
 #include "user.h"
 #include "file.h"
 class fileManager
 {
-    Q_OBJECT
 public:
     fileManager();
     bool upload(const user&,const file&);

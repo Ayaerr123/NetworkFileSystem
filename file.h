@@ -1,12 +1,10 @@
 #ifndef FILE_H
 #define FILE_H
 
-#include <QObject>
 #include <QString>
 
 class file
 {
-    Q_OBJECT
     int file_id;
     QString filename;
     QString path;
@@ -14,8 +12,7 @@ class file
     long size;
 public:
     file();
-    file(int id,QString name,QString path,int owner,long size):
-        file_id(id),filename(name),path(path),owner_id(owner),size(size){}
+    file(int,QString,QString,int,long);
     void show_infos()const;
     void set_file_id(int);
     void set_filename(QString);
