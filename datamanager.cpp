@@ -85,10 +85,10 @@ bool DataManager::save_file(const file & f){
 QVector<file> DataManager::get_files(int userId) const{
     QSqlQuery query(db);
     query.prepare("SELECT id,filename,path,owner_id,size FROM files WHERE owner_id=:userId");
-    query.bindValue("userId",userId);
+    query.bindValue(":userId",userId);
     bool result=query.exec();
     if(!result){
-        QDebug()<<"get files saved"<<query.lastError().text();
+        qDebug()<<"get files saved"<<query.lastError().text();
         return QVector<file>();
     }
     QVector<file> files;
@@ -102,4 +102,15 @@ QVector<file> DataManager::get_files(int userId) const{
         files.append(f);
     }
     return files;
+}
+bool DataManager::delete_file(int fileId){
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM files WHERE id=:fileId");
+    query.bindValue(":fileId",fileId);
+    bool result=query.exec();
+    if(!result){
+        qDebug()<<"delete file failed "<<query.lastError().text();
+        return false;
+    }
+    return true;
 }
