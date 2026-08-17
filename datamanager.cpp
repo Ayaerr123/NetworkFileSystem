@@ -48,6 +48,25 @@ bool DataManager::get_user(QString name, user &out){
     else
         return false;
 }
+bool DataManager::get_user(int id, user &out){
+    QSqlQuery query(db);
+    query.prepare("SELECT id,username,password_hash,role FROM users WHERE id=:id");
+    query.bindValue(":id",id);
+    bool result=query.exec();
+    if(!result){
+        qDebug()<<"get user failed "<<query.lastError().text();
+        return false;
+    }
+    if(query.next()){
+        out.set_user_id(query.value("id").toInt());
+        out.set_username(query.value("username").toString());
+        out.set_role(query.value("role").toString());
+        out.set_password(query.value("password_hash").toString());
+        return true;
+    }
+    else
+        return false;
+}
 bool DataManager::save_user(const user & u){
     QSqlQuery query(db);
     query.prepare("INSERT INTO users (username,password_hash,role)"
@@ -107,6 +126,28 @@ bool DataManager::delete_file(int fileId){
     QSqlQuery query(db);
     query.prepare("DELETE FROM files WHERE id=:fileId");
     query.bindValue(":fileId",fileId);
+    bool result=query.exec();
+    if(!result){
+        qDebug()<<"delete file failed "<<query.lastError().text();
+        return false;
+    }
+    return true;
+}
+bool DataManager::delete_file(QString name){
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM files WHERE filename=:name");
+    query.bindValue(":fileId",fileId);
+    bool result=query.exec();
+    if(!result){
+        qDebug()<<"delete file failed "<<query.lastError().text();
+        return false;
+    }
+    return true;
+}
+bool DataManager::delete_file(QString path){
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM files WHERE path=:path");
+    query.bindValue(":path",path);
     bool result=query.exec();
     if(!result){
         qDebug()<<"delete file failed "<<query.lastError().text();
